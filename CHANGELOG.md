@@ -1,3 +1,6 @@
+## [1.0.2+2]
+ * Prepare for publish
+
 ## [1.0.2+1]
  * Prepare for publish
 Adding plugin info
