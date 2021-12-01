@@ -1,13 +1,11 @@
-# country_provider Flutter Plugin ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fthealphamerc) [![GitHub stars](https://img.shields.io/github/stars/Thealphamerc/country_provider?style=social)](https://github.com/login?return_to=%2FTheAlphamerc%country_provider)  ![GitHub forks](https://img.shields.io/github/forks/TheAlphamerc/country_provider?style=social) 
+# country_provider2 Flutter Plugin 
 
-[![pub package](https://img.shields.io/pub/v/country_provider?color=blue)](https://pub.dev/packages/country_provider)  ![GitHub last commit](https://img.shields.io/github/last-commit/Thealphamerc/country_provider) ![GitHub pull requests](https://img.shields.io/github/issues-pr/TheAlphamerc/country_provider) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/Thealphamerc/country_provider)   ![GitHub issues](https://img.shields.io/github/issues-raw/Thealphamerc/country_provider) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/thealphamerc/country_provider) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/Thealphamerc/country_provider) 
-
-
-Country Provider is a flutter library wrapper around the API provided by REST Countries https://restcountries.eu (Get information about countries via a RESTful API)
+[![pub package](https://img.shields.io/pub/v/country_provider2?color=blue)](https://pub.dev/packages/country_provider2)   
 
 
-## Download App ![GitHub All Releases](https://img.shields.io/github/downloads/Thealphamerc/country_provider/total?color=green)
-<a href="https://github.com/TheAlphamerc/country_provider/releases/download/v1.0.1/app-release.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
+Country Provider is a flutter library wrapper around the API provided by REST Countries https://restcountries.com (Get information about countries via a RESTful API)
+
+
 
 ## Getting Started
 ### 1. Add library to your pubspec.yaml
@@ -15,19 +13,19 @@ Country Provider is a flutter library wrapper around the API provided by REST Co
 ```yaml
 
 dependencies:
-  country_provider: ^0.0.2
+  country_provider2: ^1.0.2
 
 ```
 
 ### 2. Import library in dart file
 
 ```dart
-import 'package:country_provider/country_provider.dart';
+import 'package:country_provider2/country_provider2.dart';
 ```
 
 ## Note
 
-Each method return a `List` of [`Country`](https://github.com/TheAlphamerc/country_provider/blob/master/lib/src/models/country.dart).
+Each method return a `List` of [`Country`](https://github.com/ericmartineau/country_provider2/blob/master/lib/src/models/country.dart).
 
 ## Usage
 
@@ -116,7 +114,7 @@ List<Country>? result = await CountryProvider.getCountriesByContinent("ASEAN");
 
 ## Apply filters
 
-To get filtered country data pass [CountryFilter](https://github.com/TheAlphamerc/country_provider/blob/master/lib/src/models/countryFilter.dart) model as argument in search countries method.
+To get filtered country data pass [CountryFilter](https://github.com/ericmartineau/country_provider2/blob/master/lib/src/models/countryFilter.dart) model as argument in search countries method.
 
 ```dart
 // Get all countries name only 
@@ -264,36 +262,7 @@ class CountryFilter{
 ## Credits
 
 Thanks to Fayder Florez for developing [REST Countries API](https://github.com/fayder/restcountries).
-
-
-## Other Flutter packages
- Name        | Stars        | Pub |
-:-------------------------|------------------------- | ------------------------- |
-|[Empty widget](https://github.com/TheAlphamerc/empty_widget) |[![GitHub stars](https://img.shields.io/github/stars/Thealphamerc/empty_widget?style=social)](https://github.com/login?return_to=https://github.com/TheAlphamerc/empty_widget) | [![pub package](https://img.shields.io/pub/v/empty_widget?color=blue)](https://pub.dev/packages/empty_widget) |
-|[Add Thumbnail](https://github.com/TheAlphamerc/flutter_plugin_add_thumbnail) |[![GitHub stars](https://img.shields.io/github/stars/Thealphamerc/flutter_plugin_add_thumbnail?style=social)](https://github.com/login?return_to=https://github.com/TheAlphamerc/flutter_plugin_add_thumbnail) | [![pub package](https://img.shields.io/pub/v/add_thumbnail?color=blue)](https://pub.dev/packages/add_thumbnail) |
-|[Filter List](https://github.com/TheAlphamerc/flutter_plugin_filter_list) |[![GitHub stars](https://img.shields.io/github/stars/Thealphamerc/flutter_plugin_filter_list?style=social)](https://github.com/TheAlphamerc/flutter_plugin_filter_list) | [![pub package](https://img.shields.io/pub/v/filter_list?color=blue)](https://pub.dev/packages/filter_list) |
-
-## Pull Requests
-
-I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request.
-
-## Created & Maintained By
-
-[Sonu Sharma](https://github.com/TheAlphamerc) ([Twitter](https://www.twitter.com/TheAlphamerc)) ([Youtube](https://www.youtube.com/user/sonusharma045sonu/))
-([Insta](https://www.instagram.com/_sonu_sharma__))  ![Twitter Follow](https://img.shields.io/twitter/follow/thealphamerc?style=social)
-
-> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
->
-
-> * <a href="https://www.buymeacoffee.com/thealphamerc"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="30"></a>
-> * [PayPal](https://www.paypal.me/TheAlphamerc/)
-
-
-## Visitors Count
-
-<img align="left" src = "https://profile-counter.glitch.me/country_provider/count.svg" alt ="Loading">
-
-
+Forked from https://github.com/TheAlphamerc/country_provider
 
 
 

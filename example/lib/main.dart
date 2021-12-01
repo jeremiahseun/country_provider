@@ -1,4 +1,4 @@
-import 'package:country_provider/country_provider.dart';
+import 'package:country_provider2/country_provider2.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,33 +40,22 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {});
       switch (index) {
         case 0:
-          _countryList =
-              await CountryProvider.getAllCountries(filter: CountryFilter());
+          _countryList = await CountryProvider.getAllCountries(filter: CountryFilter());
           break;
         case 1:
-          _countryList = await CountryProvider.getCountriesByName("Ameri",
-              filter: CountryFilter(isName: true));
+          _countryList = await CountryProvider.getCountriesByName("Ameri", filter: CountryFilter(isName: true));
           break;
         case 2:
-          _countryList = [
-            await CountryProvider.getCountryByFullname("India",
-                filter: CountryFilter())
-          ];
+          _countryList = [await CountryProvider.getCountryByFullname("India", filter: CountryFilter())];
           break;
         case 3:
-          _countryList = [
-            await CountryProvider.getCountryByCode("Ind",
-                filter: CountryFilter())
-          ];
+          _countryList = [await CountryProvider.getCountryByCode("Ind", filter: CountryFilter())];
           break;
         case 4:
-          _countryList = await CountryProvider.getCountriesByListOfCodes(
-              ["Ind", "col", "ru"],
-              filter: CountryFilter());
+          _countryList = await CountryProvider.getCountriesByListOfCodes(["Ind", "col", "ru"], filter: CountryFilter());
           break;
         case 5:
-          _countryList = await CountryProvider.getCountryByCurrencyCode("Inr",
-              filter: CountryFilter());
+          _countryList = await CountryProvider.getCountryByCurrencyCode("Inr", filter: CountryFilter());
           break;
         case 6:
           _countryList = await CountryProvider.getCountriesByLanguageCode([
@@ -75,20 +64,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ], filter: CountryFilter());
           break;
         case 7:
-          _countryList = await CountryProvider.getCountryByCapitalCity("Delhi",
-              filter: CountryFilter());
+          _countryList = await CountryProvider.getCountryByCapitalCity("Delhi", filter: CountryFilter());
           break;
         case 8:
-          _countryList = await CountryProvider.getCountryByCallingCode(91,
-              filter: CountryFilter());
+          _countryList = await CountryProvider.getCountryByCallingCode(91, filter: CountryFilter());
           break;
         case 9:
-          _countryList = await CountryProvider.getcountryByRegionalBloc("Asia",
-              filter: CountryFilter());
+          _countryList = await CountryProvider.getcountryByRegionalBloc("Asia", filter: CountryFilter());
           break;
         case 10:
-          _countryList = await CountryProvider.getCountriesByContinent("ASEAN",
-              filter: CountryFilter());
+          _countryList = await CountryProvider.getCountriesByContinent("ASEAN", filter: CountryFilter());
           break;
 
         default:
@@ -143,11 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Center(
                   child: Text(
                     "Select search option",
-                    style: Theme.of(context)
-                        .typography
-                        .dense
-                        .headline6!
-                        .copyWith(color: Colors.black),
+                    style: Theme.of(context).typography.dense.headline6!.copyWith(color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -163,39 +144,31 @@ class _MyHomePageState extends State<MyHomePage> {
                       _button("Countries by name ", " Example: \"Ameri\"", () {
                         _searchCountry(1);
                       }),
-                      _button("Country by full name  ", " Example: \"India\"",
-                          () {
+                      _button("Country by full name  ", " Example: \"India\"", () {
                         _searchCountry(2);
                       }),
                       _button("Country by code", " Example:  \"Ind\"", () {
                         _searchCountry(3);
                       }),
-                      _button("Countries by list of code",
-                          " Example: [Ind, Col,ru]", () {
+                      _button("Countries by list of code", " Example: [Ind, Col,ru]", () {
                         _searchCountry(4);
                       }),
-                      _button(
-                          "Countries by currency code ", " Example: \"Inr\"",
-                          () {
+                      _button("Countries by currency code ", " Example: \"Inr\"", () {
                         _searchCountry(5);
                       }),
-                      _button("Countries by language code",
-                          " Example: [en, hin,ru]", () {
+                      _button("Countries by language code", " Example: [en, hin,ru]", () {
                         _searchCountry(6);
                       }),
-                      _button("Country by capital city", " Example: \"Delhi\"",
-                          () {
+                      _button("Country by capital city", " Example: \"Delhi\"", () {
                         _searchCountry(7);
                       }),
-                      _button("Country by calling code", " Example: \"91\"",
-                          () {
+                      _button("Country by calling code", " Example: \"91\"", () {
                         _searchCountry(8);
                       }),
                       _button("Country by continent", " Example: \"Asia\"", () {
                         _searchCountry(9);
                       }),
-                      _button("Country by regional bloc", " Example: \"ASEAN\"",
-                          () {
+                      _button("Country by regional bloc", " Example: \"ASEAN\"", () {
                         _searchCountry(10);
                       }),
                     ],
@@ -216,23 +189,20 @@ class _MyHomePageState extends State<MyHomePage> {
       margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: MaterialButton(
           color: Colors.blue[400],
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10))),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
           onPressed: onPressed,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  title,
-                  style: Theme.of(context).typography.dense.bodyText1,
-                ),
-                example.isEmpty
-                    ? SizedBox()
-                    : Text(
-                        example,
-                        style: Theme.of(context).typography.dense.bodyText1,
-                      ),
-              ])
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            Text(
+              title,
+              style: Theme.of(context).typography.dense.bodyText1,
+            ),
+            example.isEmpty
+                ? SizedBox()
+                : Text(
+                    example,
+                    style: Theme.of(context).typography.dense.bodyText1,
+                  ),
+          ])
           // visualDensity: VisualDensity.standard,
           ),
     );
@@ -263,8 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Divider(color: Colors.grey.shade300, height: 1),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -273,42 +242,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       _rowData("Alpha2 Code", model.alpha2Code),
                       _rowData("Alpha3 Code", model.alpha3Code),
                       _rowData("Area", model.area.toString()),
-                      _showListData("Domain",
-                          model.topLevelDomain?.map((e) => e).toList()),
+                      _showListData("Domain", model.topLevelDomain?.map((e) => e).toList()),
                       _rowData("Demonym", model.demonym),
                       _rowData("Timezone", model.timezones?.first),
                       _rowData("Calling code", model.callingCodes?.first),
                       _rowData("Numeric Code", model.numericCode),
                       _rowData("CIOS", model.cioc),
-                      _showListData("Currency Name",
-                          model.currencies?.map((x) => x.name).toList()),
-                      _showListData("Currency code",
-                          model.currencies?.map((x) => x.code).toList()),
-                      _showListData("Currency Symbol",
-                          model.currencies?.map((x) => x.symbol).toList()),
-                      _showListData("Lat Long",
-                          model.latlng?.map((e) => e.toString()).toList()),
-                      _showListData("Language",
-                          model.languages?.map((e) => e.name).toList()),
-                      _showListData("Lang Naiive Name",
-                          model.languages?.map((e) => e.nativeName).toList()),
-                      _showListData("Lang iso6391 Code",
-                          model.languages?.map((e) => e.iso6391).toList()),
-                      _showListData("Lang iso6392 Code",
-                          model.languages?.map((e) => e.iso6392).toList()),
-                      _showListData("Regional Blocs",
-                          model.regionalBlocs?.map((e) => e.name).toList()),
-                      _showListData("Regional Blocs Aacronym",
-                          model.regionalBlocs?.map((e) => e.acronym).toList()),
+                      _showListData("Currency Name", model.currencies?.map((x) => x.name).toList()),
+                      _showListData("Currency code", model.currencies?.map((x) => x.code).toList()),
+                      _showListData("Currency Symbol", model.currencies?.map((x) => x.symbol).toList()),
+                      _showListData("Lat Long", model.latlng?.map((e) => e.toString()).toList()),
+                      _showListData("Language", model.languages?.map((e) => e.name).toList()),
+                      _showListData("Lang Naiive Name", model.languages?.map((e) => e.nativeName).toList()),
+                      _showListData("Lang iso6391 Code", model.languages?.map((e) => e.iso6391).toList()),
+                      _showListData("Lang iso6392 Code", model.languages?.map((e) => e.iso6392).toList()),
+                      _showListData("Regional Blocs", model.regionalBlocs?.map((e) => e.name).toList()),
+                      _showListData("Regional Blocs Aacronym", model.regionalBlocs?.map((e) => e.acronym).toList()),
                       _showListData("Borders", model.borders),
                       _showListData("Alt Spellings", model.altSpellings),
-                      _showListData(
-                          "Name Translations",
-                          model.translations
-                              ?.toJson()
-                              .cast<String, String?>()
-                              .values
-                              .toList()),
+                      _showListData("Name Translations", model.translations?.toJson().cast<String, String?>().values.toList()),
                     ],
                   ),
                 ),
@@ -337,11 +289,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 3,
                   child: Text(
                     text,
-                    style: Theme.of(context)
-                        .typography
-                        .dense
-                        .button!
-                        .copyWith(color: Colors.black),
+                    style: Theme.of(context).typography.dense.button!.copyWith(color: Colors.black),
                   ),
                 ),
                 Text(":  "),
@@ -349,11 +297,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 4,
                   child: Text(
                     value,
-                    style: Theme.of(context)
-                        .typography
-                        .black
-                        .bodyText1!
-                        .copyWith(color: Colors.black.withOpacity(.7)),
+                    style: Theme.of(context).typography.black.bodyText1!.copyWith(color: Colors.black.withOpacity(.7)),
                   ),
                 )
               ],
@@ -370,11 +314,7 @@ class _MyHomePageState extends State<MyHomePage> {
         flex: 3,
         child: Text(
           title,
-          style: Theme.of(context)
-              .typography
-              .dense
-              .button!
-              .copyWith(color: Colors.black),
+          style: Theme.of(context).typography.dense.button!.copyWith(color: Colors.black),
         ),
       )
     ];
@@ -399,10 +339,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
     return materialWidget(
-      Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children),
+      Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: children),
     );
   }
 
@@ -411,12 +348,9 @@ class _MyHomePageState extends State<MyHomePage> {
       margin: EdgeInsets.symmetric(vertical: 8),
       child: Material(
         shape: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black.withOpacity(.08)),
-            borderRadius: BorderRadius.all(Radius.circular(2))),
+            borderSide: BorderSide(color: Colors.black.withOpacity(.08)), borderRadius: BorderRadius.all(Radius.circular(2))),
         child: Container(
-            margin: EdgeInsets.symmetric(vertical: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: child),
+            margin: EdgeInsets.symmetric(vertical: 8), padding: const EdgeInsets.symmetric(horizontal: 8), child: child),
       ),
     );
   }
@@ -444,11 +378,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     })
                 : Text(
                     "Click search buton to select option",
-                    style: Theme.of(context)
-                        .typography
-                        .dense
-                        .bodyText1!
-                        .copyWith(color: Colors.black),
+                    style: Theme.of(context).typography.dense.bodyText1!.copyWith(color: Colors.black),
                   ),
       ),
     );
