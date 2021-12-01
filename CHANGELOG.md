@@ -1,3 +1,7 @@
+## [1.0.2+1]
+ * Prepare for publish
+Adding plugin info
+
 ## [1.0.2] 12 May 2021
 * Migrate to Null Safety
 ## [1.0.1] - 01 Jun 2020
