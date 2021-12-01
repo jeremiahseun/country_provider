@@ -32,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Country>? _countryList;
   CountryFilter filter = CountryFilter();
   bool isLoading = false;
+  final CountryProvider _countryProvider = CountryProvider();
 
   void _searchCountry(int index) async {
     try {
@@ -40,40 +41,40 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {});
       switch (index) {
         case 0:
-          _countryList = await CountryProvider.getAllCountries(filter: CountryFilter());
+          _countryList = await _countryProvider.getAllCountries(filter: CountryFilter());
           break;
         case 1:
-          _countryList = await CountryProvider.getCountriesByName("Ameri", filter: CountryFilter(isName: true));
+          _countryList = await _countryProvider.getCountriesByName("Ameri", filter: CountryFilter(isName: true));
           break;
         case 2:
-          _countryList = [await CountryProvider.getCountryByFullname("India", filter: CountryFilter())];
+          _countryList = [await _countryProvider.getCountryByFullname("India", filter: CountryFilter())];
           break;
         case 3:
-          _countryList = [await CountryProvider.getCountryByCode("Ind", filter: CountryFilter())];
+          _countryList = [await _countryProvider.getCountryByCode("Ind", filter: CountryFilter())];
           break;
         case 4:
-          _countryList = await CountryProvider.getCountriesByListOfCodes(["Ind", "col", "ru"], filter: CountryFilter());
+          _countryList = await _countryProvider.getCountriesByListOfCodes(["Ind", "col", "ru"], filter: CountryFilter());
           break;
         case 5:
-          _countryList = await CountryProvider.getCountryByCurrencyCode("Inr", filter: CountryFilter());
+          _countryList = await _countryProvider.getCountryByCurrencyCode("Inr", filter: CountryFilter());
           break;
         case 6:
-          _countryList = await CountryProvider.getCountriesByLanguageCode([
+          _countryList = await _countryProvider.getCountriesByLanguageCode([
             "Hin",
             "en",
           ], filter: CountryFilter());
           break;
         case 7:
-          _countryList = await CountryProvider.getCountryByCapitalCity("Delhi", filter: CountryFilter());
+          _countryList = await _countryProvider.getCountryByCapitalCity("Delhi", filter: CountryFilter());
           break;
         case 8:
-          _countryList = await CountryProvider.getCountryByCallingCode(91, filter: CountryFilter());
+          _countryList = await _countryProvider.getCountryByCallingCode(91, filter: CountryFilter());
           break;
         case 9:
-          _countryList = await CountryProvider.getcountryByRegionalBloc("Asia", filter: CountryFilter());
+          _countryList = await _countryProvider.getcountryByRegionalBloc("Asia", filter: CountryFilter());
           break;
         case 10:
-          _countryList = await CountryProvider.getCountriesByContinent("ASEAN", filter: CountryFilter());
+          _countryList = await _countryProvider.getCountriesByContinent("ASEAN", filter: CountryFilter());
           break;
 
         default:

@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('retrieves countries', () async {
-    final countries = await CountryProvider.getCountryByCode("US");
+    final countries = await CountryProvider.instance.getCountryByCode("US");
     expect(countries, isNotNull);
   });
 }

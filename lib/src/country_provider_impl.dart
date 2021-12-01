@@ -10,13 +10,14 @@ import 'models/country_filter.dart';
 export 'models/country.dart';
 export 'models/country_filter.dart';
 
-class CountryProvider {
-  static Client _client = Client();
-  static String _baseUrl = Constants.restCountriesBaseUrl;
+CountryProvider? _default;
 
-  void init({String baseUrl = Constants.restCountriesBaseUrl}) {
-    _baseUrl = baseUrl;
-  }
+class CountryProvider {
+  final Client client;
+  final String baseUrl;
+
+  CountryProvider({Client? client, this.baseUrl = Constants.restCountriesBaseUrl}) : client = client ?? Client();
+  static CountryProvider get instance => _default ??= CountryProvider();
 
   /// Get information about countries
   ///
@@ -29,10 +30,10 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getAllCountries({CountryFilter? filter}) async {
-    var uri = "$_baseUrl" + Constants.allCountrySiffixUri + filter.toFormattedUri;
+  Future<List<Country>> getAllCountries({CountryFilter? filter}) async {
+    var uri = "$baseUrl" + Constants.allCountrySiffixUri + filter.toFormattedUri;
     // print(uri);
-    var response = await _client.get(Uri.parse(uri));
+    var response = await client.get(Uri.parse(uri));
 
     if (response.statusCode == 200) {
       var countries = List<Country>.from(jsonDecode(response.body).map((x) => Country.fromJson(x)));
@@ -58,11 +59,11 @@ class CountryProvider {
   /// }
   /// ```
 
-  static Future<List<Country>?> getCountriesByName(String name, {CountryFilter? filter}) async {
+  Future<List<Country>?> getCountriesByName(String name, {CountryFilter? filter}) async {
     if (name.isNotEmpty) {
-      var uri = "$_baseUrl" + Constants.countryByName + name + filter.toFormattedUri;
+      var uri = "$baseUrl" + Constants.countryByName + name + filter.toFormattedUri;
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => Country.fromJson(x)));
@@ -85,16 +86,16 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<Country> getCountryByFullname(String name, {CountryFilter? filter}) async {
+  Future<Country> getCountryByFullname(String name, {CountryFilter? filter}) async {
     if (name.isNotEmpty) {
-      var uri = "$_baseUrl" +
+      var uri = "$baseUrl" +
           Constants.countryByName +
           name +
           Constants.countryByFullname +
           "&&" +
           (filter.toFormattedUri != "" ? filter.toFormattedUri.substring(1, filter.toFormattedUri.length) : '');
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => Country.fromJson(x)));
@@ -117,11 +118,11 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<Country> getCountryByCode(String code, {CountryFilter? filter}) async {
+  Future<Country> getCountryByCode(String code, {CountryFilter? filter}) async {
     if (code.isNotEmpty) {
-      var uri = "$_baseUrl" + Constants.countryByCode + code + filter.toFormattedUri;
+      var uri = "$baseUrl" + Constants.countryByCode + code + filter.toFormattedUri;
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var country = Country.fromJson(jsonDecode(response.body));
@@ -144,15 +145,15 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getCountriesByListOfCodes(List<String> codes, {CountryFilter? filter}) async {
+  Future<List<Country>> getCountriesByListOfCodes(List<String> codes, {CountryFilter? filter}) async {
     if (codes.isNotEmpty) {
-      final uri = "$_baseUrl" +
+      final uri = "$baseUrl" +
           Constants.countriesByListOfCodes +
           codes.toFormattedString! +
           "&&" +
           (filter.toFormattedUri != "" ? filter.toFormattedUri.substring(1, filter.toFormattedUri.length) : '');
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => x != null ? Country.fromJson(x) : null));
@@ -175,11 +176,11 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getCountryByCurrencyCode(String currencyCode, {CountryFilter? filter}) async {
+  Future<List<Country>> getCountryByCurrencyCode(String currencyCode, {CountryFilter? filter}) async {
     if (currencyCode.isNotEmpty) {
-      final uri = "$_baseUrl" + Constants.countriesByCurrencyCode + currencyCode + filter.toFormattedUri;
+      final uri = "$baseUrl" + Constants.countriesByCurrencyCode + currencyCode + filter.toFormattedUri;
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => x != null ? Country.fromJson(x) : null));
@@ -202,11 +203,11 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getCountriesByLanguageCode(List<String> languageCode, {CountryFilter? filter}) async {
+  Future<List<Country>> getCountriesByLanguageCode(List<String> languageCode, {CountryFilter? filter}) async {
     if (languageCode.isNotEmpty) {
-      final uri = "$_baseUrl" + Constants.countriesByLanguageCode + languageCode.toFormattedString! + filter.toFormattedUri;
+      final uri = "$baseUrl" + Constants.countriesByLanguageCode + languageCode.toFormattedString! + filter.toFormattedUri;
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => x != null ? Country.fromJson(x) : null));
@@ -229,12 +230,12 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getCountryByCapitalCity(String capitalName, {CountryFilter? filter}) async {
+  Future<List<Country>> getCountryByCapitalCity(String capitalName, {CountryFilter? filter}) async {
     if (capitalName.isNotEmpty) {
-      final uri = "$_baseUrl" + Constants.countriesByCapitalCity + capitalName + filter.toFormattedUri;
+      final uri = "$baseUrl" + Constants.countriesByCapitalCity + capitalName + filter.toFormattedUri;
 
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => x != null ? Country.fromJson(x) : null));
@@ -257,11 +258,11 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getCountryByCallingCode(int callingCode, {CountryFilter? filter}) async {
+  Future<List<Country>> getCountryByCallingCode(int callingCode, {CountryFilter? filter}) async {
     if (callingCode > 0) {
-      final uri = "$_baseUrl" + Constants.countriesByCallingCode + callingCode.toString() + filter.toFormattedUri;
+      final uri = "$baseUrl" + Constants.countriesByCallingCode + callingCode.toString() + filter.toFormattedUri;
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => x != null ? Country.fromJson(x) : null));
@@ -284,11 +285,11 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getCountriesByContinent(String continentName, {CountryFilter? filter}) async {
+  Future<List<Country>> getCountriesByContinent(String continentName, {CountryFilter? filter}) async {
     if (continentName.isNotEmpty) {
-      final uri = "$_baseUrl" + Constants.countriesByRegionalBLoc + continentName + filter.toFormattedUri;
+      final uri = "$baseUrl" + Constants.countriesByRegionalBLoc + continentName + filter.toFormattedUri;
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => x != null ? Country.fromJson(x) : null));
@@ -311,11 +312,11 @@ class CountryProvider {
   ///  }
   /// }
   /// ```
-  static Future<List<Country>> getcountryByRegionalBloc(String regiaonBlocName, {CountryFilter? filter}) async {
+  Future<List<Country>> getcountryByRegionalBloc(String regiaonBlocName, {CountryFilter? filter}) async {
     if (regiaonBlocName.isNotEmpty) {
-      final uri = "$_baseUrl" + Constants.countriesByContinent + regiaonBlocName + filter.toFormattedUri;
+      final uri = "$baseUrl" + Constants.countriesByContinent + regiaonBlocName + filter.toFormattedUri;
       // print(uri);
-      var response = await _client.get(Uri.parse(uri));
+      var response = await client.get(Uri.parse(uri));
 
       if (response.statusCode == 200) {
         var countries = List<Country>.from(jsonDecode(response.body).map((x) => x != null ? Country.fromJson(x) : null));
