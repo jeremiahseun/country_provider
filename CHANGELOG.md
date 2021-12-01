@@ -1,3 +1,6 @@
+## [1.0.2+3]
+ * Prepare for publish
+
 ## [1.0.2+2]
  * Prepare for publish
 
