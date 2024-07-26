@@ -1,16 +1,17 @@
 name: country_provider2
 version: 1.0.2+3
 homepage: https://github.com/ericmartineau/country_provider
-description: The plugin provides several methods to fetch countries info, Apply filter, and perform search operations.
-environment: 
+description: The plugin provides several methods to fetch countries info, Apply
+  filter, and perform search operations.
+environment:
   sdk: '>=2.14.0 <3.0.0'
-dependencies: 
-  http: ^0.13.4
-  flutter: 
+dependencies:
+  flutter:
     sdk: flutter
-dev_dependencies: 
-  lints: ^1.0.1
-  flutter_lints: ^1.0.4
-  flutter_test: 
+  http: ^1.2.2
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
     sdk: flutter
+  lints: ^4.0.0
 flutter: null

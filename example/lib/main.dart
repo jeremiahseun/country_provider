@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Center(
                   child: Text(
                     "Select search option",
-                    style: Theme.of(context).typography.dense.headline6!.copyWith(color: Colors.black),
+                    style: Theme.of(context).typography.dense.titleLarge!.copyWith(color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -195,13 +195,13 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
             Text(
               title,
-              style: Theme.of(context).typography.dense.bodyText1,
+              style: Theme.of(context).typography.dense.bodyLarge,
             ),
             example.isEmpty
                 ? SizedBox()
                 : Text(
                     example,
-                    style: Theme.of(context).typography.dense.bodyText1,
+                    style: Theme.of(context).typography.dense.bodyLarge,
                   ),
           ])
           // visualDensity: VisualDensity.standard,
@@ -290,7 +290,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 3,
                   child: Text(
                     text,
-                    style: Theme.of(context).typography.dense.button!.copyWith(color: Colors.black),
+                    style: Theme.of(context).typography.dense.labelLarge!.copyWith(color: Colors.black),
                   ),
                 ),
                 Text(":  "),
@@ -298,7 +298,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 4,
                   child: Text(
                     value,
-                    style: Theme.of(context).typography.black.bodyText1!.copyWith(color: Colors.black.withOpacity(.7)),
+                    style: Theme.of(context).typography.black.bodyLarge!.copyWith(color: Colors.black.withOpacity(.7)),
                   ),
                 )
               ],
@@ -315,7 +315,7 @@ class _MyHomePageState extends State<MyHomePage> {
         flex: 3,
         child: Text(
           title,
-          style: Theme.of(context).typography.dense.button!.copyWith(color: Colors.black),
+          style: Theme.of(context).typography.dense.labelLarge!.copyWith(color: Colors.black),
         ),
       )
     ];
@@ -379,7 +379,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     })
                 : Text(
                     "Click search buton to select option",
-                    style: Theme.of(context).typography.dense.bodyText1!.copyWith(color: Colors.black),
+                    style: Theme.of(context).typography.dense.bodyLarge!.copyWith(color: Colors.black),
                   ),
       ),
     );
